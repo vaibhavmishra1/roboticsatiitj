@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>vaibhav misra</title>
+</head>
+<body>
+{% for project in object_list %}
+		<ul>
+			
+				<li>{{project.user.id}}</li>
+				<li>{{project.topic}}</li>
+				<li>{{project.description}}</li>
+				<li>{{project.number_of_members_required}}</li>
+				<li>{{project.status}}</li>
+				<li>{{project.user.username}}</li>
+				
+		
+		</ul>
+			{% endfor %}
+		
+	
+</body>
+</html>

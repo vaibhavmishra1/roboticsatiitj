@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SITE_ID=1
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,8 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration'
+    'django.contrib.sites',
+    'registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+   
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,5 +127,30 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 AUTH_USER_MODEL='registration.IITJUser'
 
+LOGIN_REDIRECT_URL='/'
+ACCOUNT_LOGOUT_REDIRECT_URL ="/accounts/login"
+
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',
+'allauth.account.auth_backends.AuthenticationBackend']
+
+
+
+# ONLY for development/testing use console
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+
+
+
+# Custom allauth settings
+# Use email as the primary identifier
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+# Make email verification mandatory to avoid junk email accounts
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# Eliminate need to provide username, as it's a very old practice
+ACCOUNT_USERNAME_REQUIRED = False

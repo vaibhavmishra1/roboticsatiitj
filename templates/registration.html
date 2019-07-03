@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
 	<h2>New user</h2>
-    <form method="POST" >{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+    <form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit" class="btn btn-primary">
+	{% if object == None%}Create{% else %}Update{% endif %}
+	</button>
+	</form>
 </body>
 </html>
