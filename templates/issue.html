@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<h2>Issued Items </h2>
+	{% for material in materials %}
+		
+		
+		 <div>
+        <p>{{ material.item }}</p>
+        <p>{{ material.number }}</p>
+        <p>{{ material.provided }}</p>
+        {% if material.provided is False %}
+        <h3><a href="{% url 'issued_delete' material.id %}"> delete </a></h3>
+        {% endif %}
+   		 </div>
+        
+	{% endfor %}
+
+	<h2>New Items </h2>
+
+    <form method="post" action="{% url 'issue' %}">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit" class="btn btn-primary">
+	Add
+	</button>
+	</form>
+</body>
+</html>

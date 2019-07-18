@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
-from .models import IITJUser,Project,Feedback
-from .forms import RegistrationForm,ProjectCreateForm,FeedbackCreateForm
+from .models import IITJUser,Project,Feedback,IssueMaterial,MustKnowPeople
+from .forms import RegistrationForm,ProjectCreateForm,FeedbackCreateForm,IssueCreateForm
 from django.contrib.auth import login, authenticate
 from django.urls import reverse
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView,DeleteView
 from django.views.generic.list import ListView
 # Create your views here.
 from django.http import HttpResponseRedirect
@@ -29,21 +29,44 @@ class HomeCreateView(CreateView):
         return render(request,'home/index.html',{'form':form})
 
 
-class IssueView(CreateView):
-	def get(self, request, *args, **kwargs):
-        context = {'form': IssueCreateForm()}
-        return render(request, 'issue.html', context)
+# class IssueCreateView(CreateView):
+#     def get(self, request, *args, **kwargs):
+#         context = {'form': IssueCreateForm()}
+        
+#         return render(request, 'issue.html', context)
 
-    def post(self, request, *args, **kwargs):
-        form = IssueCreateForm(request.POST)
+#     def post(self, request, *args, **kwargs):
+#         form = IssueCreateForm(request.POST)
+        
+#         if form.is_valid():
+#             issuematerial=IssueMaterial()
+#             issuematerial.description= form.cleaned_data.get('description')
+#             issuematerial.user=request.user
+#             issuematerial.save()
+#             return HttpResponseRedirect(reverse_lazy('issue'))
+#         return render(request,'issue.html',{'form':form})
+#     def get_context_data(self,**kwargs):
+#         ctx=super(IssueCreateView,self).get_context_data(**kwargs)
+#         ctx['ids']=self.request.user.id
+#         ctx['name']=self.request.user.username
+#         ctx['materials']=IssueMaterial.objects.all()
+#         return ctx
+def IssueCreateView(request):
+    materials=IssueMaterial.objects.filter(user=request.user)
+    
+    if request.method=='POST':
+        form=IssueCreateForm(request.POST)
         if form.is_valid():
-        	feedback=Feedback()
-        	feedback.description= form.cleaned_data.get('description')
-        	feedback.user=request.user
-        	feedback.save()
-        	return HttpResponseRedirect(reverse_lazy('home'))
-        return render(request,'home/index.html',{'form':form})
-
+            material=IssueMaterial()
+            material.item= form.cleaned_data.get('item')
+            material.number= form.cleaned_data.get('number')
+            material.provided=False
+            material.user=request.user
+            material.save()
+            return HttpResponseRedirect("/issue/")
+    else:
+        form=IssueCreateForm()
+    return render(request,'issue.html',{'form':form,'materials':materials})
 
 class UserProfileView(UpdateView):
     model=IITJUser
@@ -74,8 +97,16 @@ class GeneralProjectsView(ListView):
 	template_name="projects_general.html"
 	model=Project
 
+class MustKnowView(ListView):
+    template_name="mustknow.html"
+    model=MustKnowPeople
 
 
+
+def IssuedDelete(request, id):
+    post = get_object_or_404(IssueMaterial, id=id)
+    post.delete()
+    return redirect('issue')
 
 class ProjectCreateView(CreateView):
     def get(self, request, *args, **kwargs):

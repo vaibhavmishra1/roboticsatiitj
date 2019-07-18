@@ -32,4 +32,16 @@ class Feedback(models.Model):
 
 class IssueMaterial(models.Model):
 	user=models.ForeignKey(IITJUser,on_delete=models.CASCADE)
-	
+	item=models.CharField(max_length=100)
+	number=models.IntegerField()
+	provided=models.BooleanField()
+
+
+class MustKnowPeople(models.Model):
+	name=models.CharField(max_length=100)
+	year=models.IntegerField()
+	description=models.CharField(max_length=500)
+	contact=models.CharField(max_length=500)
+	image1= models.ImageField(upload_to='images',blank=True)
+
+

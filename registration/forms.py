@@ -16,3 +16,7 @@ class ProjectCreateForm(forms.ModelForm):
 class FeedbackCreateForm(forms.Form):
     description=forms.CharField(required=False)
     
+
+class IssueCreateForm(forms.Form):
+	item=forms.CharField(required=True)
+	number=forms.IntegerField(required=True)
