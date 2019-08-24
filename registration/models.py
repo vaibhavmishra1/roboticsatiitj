@@ -3,13 +3,16 @@ COLOR_CHOICES = (
     ('B1','B1'),
     ('B2', 'B2'),
     ('B3','B3'),
+    ('B5', 'B5'),
+    ('G4', 'G4'),
     ('G5','G5'),
     ('G6','G6'),
+	('I2', 'I2'),
 )
 STATUS_CHOICES = (
     ('ONGOING','ongoing'),
     ('COMPLETED', 'completed'),
-    
+
 )
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
