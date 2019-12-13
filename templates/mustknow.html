@@ -1,17 +1,15 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>vaibhav misra</title>
-</head>
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<br><br><br><br><hr>
 <body>
 {% for object in object_list %}
-		<ul> {{object.name}}
-		</ul>
+		<ul> {{object.name}}</ul>
 		<img src="{{ object.image1.url }}" width="240">
-		
-			{% endfor %}
-		
-	
+		{% endfor %}	
 </body>
-</html>
+{%endblock%}

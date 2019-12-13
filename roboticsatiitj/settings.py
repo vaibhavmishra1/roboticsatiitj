@@ -41,12 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'registration',
     'allauth',
+    'crispy_forms',
     'allauth.account',
     'allauth.socialaccount',
    
 ]
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'roboticsatiitj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR,'templates','allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

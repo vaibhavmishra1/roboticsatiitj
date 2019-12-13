@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<h2>New user</h2>
-    <form method="post">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit" class="btn btn-primary">
-	{% if object == None%}Create{% else %}Update{% endif %}
-	</button>
-	</form>
-</body>
-</html>
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<br><br><br><br><hr>
+<div class="container">
+	<br><br><br><br>
+<h2 style="color:white">New user</h2>
+<form method="post">
+{% csrf_token %}
+{{ form|crispy }}
+<button type="submit" class="btn btn-primary">
+{% if object == None%}Create{% else %}Update{% endif %}
+</button>
+</form>
+<br><br><br>
+</div>
+
+{% endblock %}
