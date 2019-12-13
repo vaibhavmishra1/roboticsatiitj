@@ -69,7 +69,7 @@
             <nav class="main-navigation">
                 <div class="container clearfix">
                     <div class="site-logo-wrap">
-                        <a class="logo" href="/"><img src="{% static 'home/images/ds-logo.svg' %}" alt="Design Studio"></a>
+                        <a class="logo" href="/"><img src="{% static 'home/images/black-robotics.png' %}" alt="Design Studio"></a>
                     </div>
                     <a href="javascript:void(0)" class="menu-trigger hidden-lg-up"><span>&nbsp;</span></a>
                     <div class="main-menu hidden-md-down">
@@ -81,14 +81,6 @@
                 <div class="mobile-menu hidden-lg-up">
                     <ul class="mobile-menu-list">
                         <li><a class="nav-link" href="/" data-target="#HeroBanner">Home</a></li>
-                        {% if request.user.is_authenticated %}
-                        <li><a class="nav-link" href="javascript:void(0)" data-target="#Services">Services</a></li>
-                        <li><a class="nav-link" href="javascript:void(0)" data-target="#About">About Us</a></li>
-                        
-                        </li>
-                        
-                        <li><a class="nav-link" href="javascript:void(0)" data-target="#ContactUs">Contact</a></li>
-                        {% endif %}
                     </ul>
                 </div>
             </nav>
@@ -131,7 +123,7 @@
                     </ul>
                 </div>
                 <div class="footer-logo-wrap">
-                    Design Studio &copy; 2018. Designed by <a href="https://www.position2.com/">Position2</a>
+                    Robotics Club &copy; 2019
                 </div>
             </div>
         </footer>    

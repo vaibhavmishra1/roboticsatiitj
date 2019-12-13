@@ -110,8 +110,8 @@ ul, li {
 	transition: all 0.3s ease-in-out;
 }
 #Header.header-fixed .site-logo-wrap .logo img {
-	width: 70px;
-	transition: all 0.3s ease-in-out;
+	width: 170px;
+	transition: all 0.2s ease-in-out;
 }
 #Header.header-fixed .main-menu {
 	padding: 27px 0;
@@ -132,7 +132,7 @@ ul, li {
 	transition: all 0.3s ease-in-out;
 }
 #Header .site-logo-wrap .logo {
-	color: #fff;
+	color: black;
 	font-size: 24px;
 	font-style: italic;
 	display: inline-block;
@@ -140,7 +140,7 @@ ul, li {
 #Header .site-logo-wrap .logo img {
 	display: inline-block;
 	vertical-align: middle;
-	width: 80px;
+	width: 0px;
 }
 #Header .main-menu {
 	width: 70%;

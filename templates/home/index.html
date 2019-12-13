@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,9 +74,10 @@
             <nav class="main-navigation">
                 <div class="container clearfix">
                     <div class="site-logo-wrap">
-                        <a class="logo" href="#"><img src="{% static 'home/images/ds-logo.svg' %}" alt="Design Studio"></a>
+                        <a class="logo" href="#"><img src="{% static 'home/images/black-robotics.png' %}" alt="Design Studio"></a>
                     </div>
-                    <a href="javascript:void(0)" class="menu-trigger hidden-lg-up"><span>&nbsp;</span></a>
+                    <a href="javascript:void(0)" class="menu-trigger hidden-lg-up"><span>&nbsp;</span>
+                    </a>
                     <div class="main-menu hidden-md-down">
                         <ul class="menu-list">
                             <li><a class="nav-link" href="javascript:void(0)" data-target="#HeroBanner">Home</a></li>
@@ -196,15 +198,12 @@
                     </div>
                     <div class="form-wrap">
                         <p class="add-title">Send Us Message</p>
-                        
-
-
-                            <form method="post">
+                            <form method="post" action="{% url 'message' %}">
                             {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit" class="btn btn-primary">
-                                Submit
-                            </button>
+                            {{ form|crispy }}
+                            <h5 class="primaryAction hero-cta"  type="submit">
+                                  <font style="color:black">Submit </font>
+                            </h5>
                             </form>
 
                            
@@ -228,7 +227,7 @@
                     </ul>
                 </div>
                 <div class="footer-logo-wrap">
-                    Design Studio &copy; 2018. Designed by <a href="https://www.position2.com/">Position2</a>
+                    Robotics Club &copy; 2019
                 </div>
             </div>
         </footer>

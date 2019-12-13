@@ -1,15 +1,44 @@
 {% extends "account/base.html" %}
 {% load crispy_forms_tags %}
 {% load i18n %}
+<head><link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css"></head>
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<br><br><br><br><hr>
+<hr>
 <body>
+	<h2><font style="text-align: center; font-size: 40px"><strong>Must Know Them</strong></font></h2><br>
+<section class="ftco-section">
+	<div class="container">
+		<div class="row">	
 {% for object in object_list %}
-		<ul> {{object.name}}</ul>
-		<img src="{{ object.image1.url }}" width="240">
-		{% endfor %}	
+          <div class="col-md-6 col-lg-4 ftco-animate" style="margin-bottom: 20px">
+            <div class="blog-entry">	
+              <div class="text border border-top-0 p-4">
+                <h3 class="heading">{{object.name}}</h3>
+                <img src="{{ object.image1.url }}" width="240">
+              </div>
+            </div>
+          </div>	
+          {% endfor %}	
+	</div>
+</div>
+</section>
+			
 </body>
 {%endblock%}
