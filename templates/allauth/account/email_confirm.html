@@ -14,13 +14,13 @@
 {% user_display confirmation.email_address.user as user_display %}
 
 <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
-
+<font style="color:white">
 <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
 {% csrf_token %}
 {{ form|crispy }}
     <button type="submit" class="hero-cta" style="color: black">{% trans 'Confirm' %}</button>
 </form>
-
+</font>
 {% else %}
 
 {% url 'account_email' as email_url %}

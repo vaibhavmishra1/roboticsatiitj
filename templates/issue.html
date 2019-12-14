@@ -35,7 +35,7 @@
           <div class="col-md-6 col-lg-4 ftco-animate" style="margin-bottom: 20px">
         <div class="blog-entry">	
               <div class="text border border-top-0 p-4">
-                <h3 class="heading">{{ material.item }}</h3>
+                <h3 class="heading" style="color:yellow">{{ material.item }}</h3>
                 <p style="font-size:15px">{{project.description}}
         		<br>No of Items: {{ material.number }}
         		<br>Current Status (Provided or Not): {{ material.provided }}
@@ -55,7 +55,8 @@
 <div class="container">
     <form method="post" action="{% url 'issue' %}">
 	{% csrf_token %}
-	{{ form|crispy }}
+    <font style="color: white">
+	{{ form|crispy }}</font>
 	<button type="submit" class="btn btn-primary">
 	Add
 	</button>

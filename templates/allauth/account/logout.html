@@ -8,7 +8,7 @@
 <h1>{% trans "Sign Out" %}</h1>
 
 <p>{% trans 'Are you sure you want to sign out?' %}</p>
-
+<font style="color:white">
 <form method="post" action="{% url 'account_logout' %}">
   {% csrf_token %}
   {% if redirect_field_value %}
@@ -16,6 +16,7 @@
   {% endif %}
   <button type="submit" class="hero-cta"><font style="color: black">{% trans 'Sign Out' %}</font></button>
 </form>
+</font>
 
 
 {% endblock %}

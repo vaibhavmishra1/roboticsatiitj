@@ -11,6 +11,8 @@ from django.views.generic.list import ListView
 # Create your views here.
 from django.http import HttpResponseRedirect
 
+
+
 from django.urls import reverse_lazy
 
 class HomeCreateView(CreateView):
@@ -133,5 +135,4 @@ class ProjectCreateView(CreateView):
             Project.save()
             return HttpResponseRedirect(reverse_lazy('home'))
         return render(request, 'addproject.html', {'form': form})
-
         

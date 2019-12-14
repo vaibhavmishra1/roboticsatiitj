@@ -22,7 +22,7 @@
 {% block content %}
 <br><br><br><br><hr>
 <body>
-<h2><font style="text-align: center; font-size: 40px"><strong>Your Projects</strong></font></h2><br>
+<h2><font style="text-align: center; font-size: 40px ;color:white"><strong>Your Projects</strong></font></h2><br>
 <section class="ftco-section">
 	<div class="container">
 		<div class="row">
@@ -31,12 +31,13 @@
 			<div class="col-md-6 col-lg-4 ftco-animate" style="margin-bottom: 20px">
             <div class="blog-entry">	
               <div class="text border border-top-0 p-4">
-				<h3 class="heading">{{project.user.id}}-{{project.topic}}</h3>
+				<h3 class="heading" style="color:yellow">{{project.topic}}</h3>
                 <p style="font-size:15px">{{project.description}}
         		<br>No of Members required: {{project.number_of_members_required}}
         		<br>Current Status: {{project.status}}
         		<br>By: {{project.user.username}}</p>
             </div>
+          </div>
           </div>			
 {% endifequal %}
 	{% endfor %}

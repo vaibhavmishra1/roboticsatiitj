@@ -12,7 +12,7 @@
 	<div class="container">
 	<form class="login" method="POST" action=".">
 {% csrf_token %}
-  {{ form|crispy  }}
+ <font style="color:white"> {{ form|crispy  }}</font>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
