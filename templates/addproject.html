@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>vaibhav misra</title>
-</head>
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<h1>{% trans "Make New Project" %}</h1>
+
 <body>
-
-	<form action="." method="POST">
+	<div class="container">
+	<form class="login" method="POST" action=".">
 {% csrf_token %}
-{{ form.as_p }}
-<button type="submit">SUBMIT</button>
+ <font style="color:white"> {{ form|crispy  }}</font>
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+<button class="primaryAction hero-cta"  type="submit"><font style="color:black">SUBMIT</font></button>
 </form>
-
+</div>
 </body>
-</html>
+
+{%endblock%}

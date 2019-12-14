@@ -33,5 +33,6 @@ urlpatterns = [
     path('delete_issued/<int:id>', stores_views.IssuedDelete, name='issued_delete'),
     url(r'^projects/$',stores_views.GeneralProjectsView.as_view(), name='allprojects'),
     url(r'^mustknow/$',stores_views.MustKnowView.as_view(), name='mustknow'),
+    url(r'^sendmessage/$',stores_views.messagegiven,name="message")
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

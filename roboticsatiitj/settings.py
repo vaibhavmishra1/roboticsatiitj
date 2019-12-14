@@ -9,8 +9,14 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+import django_heroku
 import os
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tomartarun2001@gmail.com'
+EMAIL_HOST_PASSWORD = 'Tarun@2001'
+EMAIL_PORT = 587
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,12 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'registration',
     'allauth',
+    'crispy_forms',
     'allauth.account',
     'allauth.socialaccount',
    
 ]
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,7 +70,7 @@ ROOT_URLCONF = 'roboticsatiitj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR,'templates','allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,6 +130,8 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -143,8 +152,7 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',
 
 
 # ONLY for development/testing use console
-EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
-
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 
 
 # Custom allauth settings
@@ -155,3 +163,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # Eliminate need to provide username, as it's a very old practice
 ACCOUNT_USERNAME_REQUIRED = False
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
-from .models import IITJUser,Project,Feedback,IssueMaterial,MustKnowPeople
+from .models import IITJUser,Project,Feedback,IssueMaterial,MustKnowPeople,Messages
 from .forms import RegistrationForm,ProjectCreateForm,FeedbackCreateForm,IssueCreateForm
 from django.contrib.auth import login, authenticate
 from django.urls import reverse
@@ -10,6 +10,8 @@ from django.views.generic.edit import UpdateView,DeleteView
 from django.views.generic.list import ListView
 # Create your views here.
 from django.http import HttpResponseRedirect
+
+
 
 from django.urls import reverse_lazy
 
@@ -68,6 +70,18 @@ def IssueCreateView(request):
         form=IssueCreateForm()
     return render(request,'issue.html',{'form':form,'materials':materials})
 
+def messagegiven(request):  
+    if request.method == 'POST':
+        form=Messages(request.POST)
+        Material = Messages()
+        Material.message = form.cleaned_data.get('message')
+        Material.user=request.user
+        Material.save()
+        return HttpResponseRedirect("/")
+    return redirect('/')        
+
+
+
 class UserProfileView(UpdateView):
     model=IITJUser
     form_class=RegistrationForm
@@ -121,3 +135,4 @@ class ProjectCreateView(CreateView):
             Project.save()
             return HttpResponseRedirect(reverse_lazy('home'))
         return render(request, 'addproject.html', {'form': form})
+        

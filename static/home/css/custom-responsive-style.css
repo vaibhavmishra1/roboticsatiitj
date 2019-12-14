@@ -19,7 +19,7 @@
     padding: 23px 0;
   }
   #Header .site-logo-wrap .logo img {
-    width: 55px;
+    width: 0px;
   }
   #Header.header-fixed .site-logo-wrap .logo img {
     width: 50px;
@@ -245,7 +245,7 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
   #Header .site-logo-wrap .logo img {
-    width: 60px;
+    width: 0px;
   }
   /* Hero banner style */
   #HeroBanner .hero-content h1 {

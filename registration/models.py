@@ -47,4 +47,7 @@ class MustKnowPeople(models.Model):
 	contact=models.CharField(max_length=500)
 	image1= models.ImageField(upload_to='images',blank=True)
 
+class Messages(models.Model):
+	user=models.ForeignKey(IITJUser,on_delete=models.CASCADE)
+	message = models.CharField(max_length=300)	
 
