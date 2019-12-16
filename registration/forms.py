@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import IITJUser,Project,Feedback
 
-class RegistrationForm(UserCreationForm):
+class RegistrationForm(forms.ModelForm):
     class Meta:
         model = IITJUser
         

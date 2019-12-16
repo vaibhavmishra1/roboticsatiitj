@@ -202,9 +202,9 @@
                             <form method="post" action="{% url 'message' %}">
                             {% csrf_token %}
                             {{ form|crispy }}
-                            <h5 class="primaryAction hero-cta"  type="submit">
+                            <button class="primaryAction hero-cta"  type="submit" style="text-align: center;">
                                   <font style="color:black">Submit </font>
-                            </h5>
+                            </button>
                             </form>
 
                            
