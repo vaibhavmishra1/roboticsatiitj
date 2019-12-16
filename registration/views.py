@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
-from .models import IITJUser,Project,Feedback,IssueMaterial,MustKnowPeople,Messages
+from .models import IITJUser,Project,Feedback,IssueMaterial,MustKnowPeople
 from .forms import RegistrationForm,ProjectCreateForm,FeedbackCreateForm,IssueCreateForm
 from django.contrib.auth import login, authenticate
 from django.urls import reverse
@@ -10,6 +10,7 @@ from django.views.generic.edit import UpdateView,DeleteView
 from django.views.generic.list import ListView
 # Create your views here.
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 
 
@@ -71,14 +72,17 @@ def IssueCreateView(request):
     return render(request,'issue.html',{'form':form,'materials':materials})
 
 def messagegiven(request):  
-    if request.method == 'POST':
-        form=Messages(request.POST)
-        Material = Messages()
-        Material.message = form.cleaned_data.get('message')
-        Material.user=request.user
-        Material.save()
-        return HttpResponseRedirect("/")
-    return redirect('/')        
+    if request.method=='POST':
+        form=FeedbackCreateForm(request.POST)
+        if form.is_valid():
+            new = Feedback()
+            new.user = request.user
+            new.description=form.cleaned_data.get('description')
+            new.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = FeedbackCreateForm()        
+    return render(request,'/')        
 
 
 
